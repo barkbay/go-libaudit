@@ -156,7 +156,7 @@ func (c *AuditClient) GetStatus() (*AuditStatus, error) {
 
 	replyStatus := &AuditStatus{}
 	if err := replyStatus.FromWireFormat(reply.Data); err != nil {
-		return nil, fmt.Errorf("failed to unmarshal reply: %w", err)
+		return nil, fmt.Errorf("failed to unmarshal reply: %w, reply.Data (len %d) is %s", err, len(reply.Data), string(reply.Data))
 	}
 
 	return replyStatus, nil
